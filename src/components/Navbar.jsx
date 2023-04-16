@@ -11,16 +11,19 @@ const Navbar = () => {
 
   return (
     <div className="flex flex-col justify-center items-center w-full h-[200px] bg-slate-800">
-      <h1 className="pb-3 text-2xl text-white">
+      <button
+        onClick={() => {nevigate("/"), dispatch(setSearchRef())}}
+        className="pb-3 text-2xl text-white"
+      >
         Find your table for any occasion
-      </h1>
+      </button>
       <div className="form-control">
         <div className="input-group">
           <input
             onKeyDown={(e) => {
               if (e.key == "Enter") {
                 // nevigate(`/search?city=${searchRef.current.value}`);
-                setSearchParams({ city: "\""+searchRef.current.value +"\"" });
+                setSearchParams({ city: '"' + searchRef.current.value + '"' });
                 console.log(searchRef.current.value);
                 dispatch(setSearchRef(searchRef.current.value));
                 searchRef.current.value = "";

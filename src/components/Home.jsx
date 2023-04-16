@@ -1,66 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setData } from "../features/data/DataSlice";
-import { restaurantData } from "../data/RestaurantsData";
+import { getData, singleRestaurant } from "../features/data/DataSlice";
+import SearchData from "./SearchData";
+import RestaurantList from "./RestaurantList";
+
 
 const Home = () => {
-  const data = useSelector((state) => state.dataReducer.value);
-  const inputSearch = useSelector((state) => state.dataReducer.searchRef);
+  const [filterData, setFilterData] = useState();
+  const {value, searchRef} = useSelector((state) => state.dataReducer);
   const dispatch = useDispatch();
 
-  const filterSearch = () => {
-    if (inputSearch) {
-      const filterData = data.filter((val) => {
-        if (val.city.toLowerCase() === inputSearch.toLowerCase()) {
-          return val;
-        }
-      });
-    }
-  };
   useEffect(() => {
-    filterSearch();
-  }, [inputSearch]);
+    dispatch(getData());
+  }, []);
 
   return (
     <div>
       <Navbar />
-      <div className="grid grid-cols-4 gap-10 m-5">
-        {(!inputSearch)? data.map((item, i) => (
-          <div
-            className=" hover:shadow-2xl hover:scale-[102%] duration-300"
-            key={i}
-          >
-            <Link to={`/restaurant/${i + 1}`}>
-              <img
-                src={item.images[Math.round(Math.random() * 4)]}
-                alt="restaurant"
-              />
-              <h1 className=" text-2xl">{item.name}</h1>
-              <p>{item.city}</p>
-              <p>{item.price}</p>
-              <p>{item.cuisine}</p>
-            </Link>
-          </div>
-        )) : fillterData.map((item, i) => (
-          <div
-            className=" hover:shadow-2xl hover:scale-[102%] duration-300"
-            key={i}
-          >
-            <Link to={`/restaurant/${i + 1}`}>
-              <img
-                src={item.images[Math.round(Math.random() * 4)]}
-                alt="restaurant"
-              />
-              <h1 className=" text-2xl">{item.name}</h1>
-              <p>{item.city}</p>
-              <p>{item.price}</p>
-              <p>{item.cuisine}</p>
-            </Link>
-          </div>
-        ))
-        }
+      <div>
+        {value?.length > 0 && !searchRef && <RestaurantList/>}
+          {searchRef && <SearchData/>}
       </div>
     </div>
   );
