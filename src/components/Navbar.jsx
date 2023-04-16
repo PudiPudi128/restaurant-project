@@ -23,7 +23,7 @@ const Navbar = () => {
             onKeyDown={(e) => {
               if (e.key == "Enter") {
                 // nevigate(`/search?city=${searchRef.current.value}`);
-                setSearchParams({ city: '"' + searchRef.current.value + '"' });
+                setSearchParams({ city: searchRef.current.value });
                 console.log(searchRef.current.value);
                 dispatch(setSearchRef(searchRef.current.value));
                 searchRef.current.value = "";

@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const SearchData = () => {
-  return <div>SearchData</div>;
+  const doFilterToData = () => {
+
+  };
+
+  useEffect(() => {
+    doFilterToData();
+  },[]);
+  return <div></div>;
 };
 
 export default SearchData;

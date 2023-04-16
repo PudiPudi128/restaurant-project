@@ -5,10 +5,9 @@ import { getData, singleRestaurant } from "../features/data/DataSlice";
 import SearchData from "./SearchData";
 import RestaurantList from "./RestaurantList";
 
-
 const Home = () => {
   const [filterData, setFilterData] = useState();
-  const {value, searchRef} = useSelector((state) => state.dataReducer);
+  const { value, searchRef } = useSelector((state) => state.dataReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,10 +17,8 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div>
-        {value?.length > 0 && !searchRef && <RestaurantList/>}
-          {searchRef && <SearchData/>}
-      </div>
+      {value?.length > 0 && !searchRef && <RestaurantList />}
+      {/* {searchRef && <SearchData />} */}
     </div>
   );
 };

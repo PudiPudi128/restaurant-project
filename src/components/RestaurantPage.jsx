@@ -7,15 +7,14 @@ const RestaurantPage = () => {
   const { id } = useParams();
   const data = useSelector((state) => state.dataReducer.value);
   const dispatch = useDispatch();
-  console.log(data);
-  console.log(id);
 
-  // useEffect(() => {
-  //   dispatch(singleRestaurant(id))
-  // },[])
+  useEffect(() => {
+    dispatch(singleRestaurant(id))
+  },[])
 
   return (
-    <div className=" flex items-center flex-col">
+    <>
+    {data?.name && <div className=" flex items-center flex-col">
       <div className="flex flex-col justify-center items-center w-full h-[250px] bg-slate-800">
         <h1 className=" text-6xl text-white">
           {data.name} Restaurant ({data.city})
@@ -40,7 +39,8 @@ const RestaurantPage = () => {
           <img src={data.images[3]} alt="image restautrant 4" />
         </div>
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 

@@ -17,7 +17,6 @@ const RestaurantList = () => {
         >
           <Link
             to={`/restaurant/${item.id}`}
-            onClick={() => dispatch(singleRestaurant(item.id))}
           >
             <img
               src={item.images[Math.round(Math.random() * 4)]}

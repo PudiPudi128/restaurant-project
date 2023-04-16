@@ -33,16 +33,13 @@ export const dataSlice = createSlice({
     singleRestaurant: (state, action) => {
       const id = action.payload;
       const restaurants = JSON.parse(localStorage.getItem("restaurants"));
-
-      const filterRestaurant = restaurants.find((restaurant) => restaurant.id === id)
+      const filterRestaurant = restaurants.find(
+        (restaurant) => restaurant.id === parseInt(id)
+      );
       state.value = filterRestaurant;
     },
   },
 });
-
-// const saveInLocalStorage = (value,key) => {
-//   localStorage.setItem("restaurants", JSON.stringify(state.value));
-// }
 
 export const {
   setData,
