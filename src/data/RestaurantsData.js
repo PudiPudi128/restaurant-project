@@ -239,3 +239,5 @@ export const restaurantData = [
       "Pujol is a world-renowned restaurant that offers innovative and modern Mexican dishes made with fresh and locally-sourced ingredients.",
   },
 ];
+
+export let nextRestaurantId = restaurantData.length+1;

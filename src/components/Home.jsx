@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { getData, getSearchRef, singleRestaurant } from "../features/data/DataSlice";
+import { getData, getSearchRef } from "../features/data/DataSlice";
 import SearchData from "./SearchData";
 import RestaurantList from "./RestaurantList";
 

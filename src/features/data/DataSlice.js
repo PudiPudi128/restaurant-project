@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { restaurantData } from "../../data/RestaurantsData";
+import { nextRestaurantId, restaurantData } from "../../data/RestaurantsData";
 
 export const dataSlice = createSlice({
   name: "data",
@@ -35,7 +35,7 @@ export const dataSlice = createSlice({
       state.value = JSON.parse(localStorage.getItem("restaurants"));
       state.value = [...state.value, action.payload];
       state.value[state.value.length-1].images = (state.value[state.value.length-1].images).split(',');
-      state.value[state.value.length-1].id = state.value.length;
+      state.value[state.value.length-1].id = nextRestaurantId;
       state.value[state.value.length-1].created_at = Date.now();
       localStorage.setItem("restaurants", JSON.stringify(state.value));
     },
@@ -57,12 +57,6 @@ export const dataSlice = createSlice({
       );
       state.value = filterRestaurant;
     },
-    updateId: (state, action) => {
-      state.value.map((item, i) => (
-        item.id = i
-      ))
-      localStorage.setItem("restaurants", JSON.stringify(state.value));
-    }
   },
 });
 
@@ -75,7 +69,6 @@ export const {
   getSearchRef,
   singleRestaurant,
   addData,
-  updateId,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

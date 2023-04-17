@@ -25,7 +25,7 @@ const UpdateRestaurant = () => {
 
   const onSub = (_bodyData) => {
     console.log(_bodyData);
-    dispatch(updateData([{_bodyData},{id}]));
+    dispatch(updateData([{ _bodyData }, { id }]));
     netvigate("/restaurant/manage");
   };
 
@@ -35,7 +35,7 @@ const UpdateRestaurant = () => {
 
   return (
     <div>
-      {data[id-1] && (
+      {data[id] && (
         <div className=" flex items-center h-screen bg-slate-300">
           <div className="w-full max-w-md mx-auto">
             <form
@@ -50,7 +50,7 @@ const UpdateRestaurant = () => {
                   Name
                 </label>
                 <input
-                  defaultValue={!toggle ? data[id - 1].name : ""}
+                  defaultValue={!toggle ? data[id].name : ""}
                   {...register("name", {
                     required: { value: true, message: "Name is required..." },
                     minLength: { value: 2, message: "min 2 chars..." },
@@ -75,7 +75,7 @@ const UpdateRestaurant = () => {
                   City
                 </label>
                 <input
-                  defaultValue={!toggle ? data[id - 1].city : ""}
+                  defaultValue={!toggle ? data[id].city : ""}
                   {...register("city", {
                     required: { value: true, message: "City is required..." },
                     minLength: { value: 2, message: "min 2 chars..." },
@@ -100,7 +100,7 @@ const UpdateRestaurant = () => {
                   Price
                 </label>
                 <input
-                  defaultValue={!toggle ? data[id - 1].price : ""}
+                  defaultValue={!toggle ? data[id].price : ""}
                   {...register("price", {
                     required: { value: true, message: "Price is required..." },
                     minLength: { value: 2, message: "min 2 chars..." },
@@ -125,7 +125,7 @@ const UpdateRestaurant = () => {
                   Main Image
                 </label>
                 <input
-                  defaultValue={!toggle ? data[id - 1].main_image : ""}
+                  defaultValue={!toggle ? data[id].main_image : ""}
                   {...register("main_image", {
                     required: {
                       value: true,
@@ -153,7 +153,7 @@ const UpdateRestaurant = () => {
                   Cuisine
                 </label>
                 <input
-                  defaultValue={!toggle ? data[id - 1].cuisine : ""}
+                  defaultValue={!toggle ? data[id].cuisine : ""}
                   {...register("cuisine", {
                     required: {
                       value: true,
@@ -181,7 +181,7 @@ const UpdateRestaurant = () => {
                   Images
                 </label>
                 <input
-                  defaultValue={!toggle ? data[id - 1].images : ""}
+                  defaultValue={!toggle ? data[id].images : ""}
                   {...register("images", {
                     required: { value: true, message: "Images is required..." },
                     minLength: { value: 20, message: "min 20 chars..." },
@@ -206,7 +206,7 @@ const UpdateRestaurant = () => {
                   Description
                 </label>
                 <textarea
-                  defaultValue={!toggle ? data[id - 1].description : ""}
+                  defaultValue={!toggle ? data[id].description : ""}
                   {...register("description", {
                     required: {
                       value: true,
@@ -232,15 +232,20 @@ const UpdateRestaurant = () => {
                   update
                 </button>
                 <div className=" grid gap-2">
-                <button
-                  onClick={() => {
-                    reset(), setToggle(true);
-                  }}
-                  className="bg-blue-500 hover:bg-blue-700 text-white btn"
-                >
-                  clean
-                </button>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white btn" onClick={() => setToggle(false)}>reset</button>
+                  <button
+                    onClick={() => {
+                      reset(), setToggle(true);
+                    }}
+                    className="bg-blue-500 hover:bg-blue-700 text-white btn"
+                  >
+                    clean
+                  </button>
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white btn"
+                    onClick={() => setToggle(false)}
+                  >
+                    reset
+                  </button>
                 </div>
               </div>
             </form>
