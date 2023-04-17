@@ -66,9 +66,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <button className="btn mt-4" onClick={() => dispatch(setData(restaurantData))}>
-        Reset LocalStorage
-      </button>
     </div>
   );
 };
