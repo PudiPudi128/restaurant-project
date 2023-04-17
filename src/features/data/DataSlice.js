@@ -19,10 +19,12 @@ export const dataSlice = createSlice({
     },
     updateData: (state, action) => {
       state.value = JSON.parse(localStorage.getItem("restaurants"));
-      const id = action.payload[1].id;
-      state.value[id-1] = action.payload[0]._bodyData;
-      state.value[id-1].id = id;
-      state.value[id-1].update_at = Date.now();
+      const i = action.payload[1].id;
+      const id =  state.value[i-1].id;
+      console.log(id);
+      state.value[i-1] = action.payload[0]._bodyData;
+      state.value[i-1].id = id;
+      state.value[i-1].update_at = Date.now();
       localStorage.setItem("restaurants", JSON.stringify(state.value));
     },
     deleteData: (state, action) => {

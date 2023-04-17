@@ -6,7 +6,7 @@ const EditableRestaurantList = ({ data }) => {
   return (
     <div className=" container mx-auto mt-2">
       {data && data.map((item) => (
-          <EditableRestaurantListItem item={item} key={item.id}/>
+          <EditableRestaurantListItem item={item} key={item.id} data={data}/>
         ))}
     </div>
   );
