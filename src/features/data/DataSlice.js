@@ -17,8 +17,20 @@ export const dataSlice = createSlice({
     getData: (state, action) => {
       state.value = JSON.parse(localStorage.getItem("restaurants"));
     },
-    updateData: (state, action) => {},
-    deleteData: (state, action) => {},
+    updateData: (state, action) => {
+      state.value = JSON.parse(localStorage.getItem("restaurants"));
+      const id = action.payload[1].id;
+      state.value[id-1] = action.payload[0]._bodyData;
+      state.value[id-1].id = id;
+      state.value[id-1].update_at = Date.now();
+      localStorage.setItem("restaurants", JSON.stringify(state.value));
+    },
+    deleteData: (state, action) => {
+      const id = action.payload;
+      const filterData = state.value.filter((val) => val.id !== id);
+      state.value = filterData;
+      localStorage.setItem("restaurants", JSON.stringify(state.value));
+    },
     addData: (state, action) => {
       state.value = JSON.parse(localStorage.getItem("restaurants"));
       state.value = [...state.value, action.payload];
@@ -45,6 +57,12 @@ export const dataSlice = createSlice({
       );
       state.value = filterRestaurant;
     },
+    updateId: (state, action) => {
+      state.value.map((item, i) => (
+        item.id = i
+      ))
+      localStorage.setItem("restaurants", JSON.stringify(state.value));
+    }
   },
 });
 
@@ -57,6 +75,7 @@ export const {
   getSearchRef,
   singleRestaurant,
   addData,
+  updateId,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

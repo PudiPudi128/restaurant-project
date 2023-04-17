@@ -25,7 +25,7 @@ const Navbar = () => {
             <Link to={"/restaurant/add"}>Add Restaurant</Link>
           </li>
           <li>
-            <a>Item 2</a>
+          <Link to={"/restaurant/manage"}>Manage Restaurant</Link>
           </li>
         </ul>
       </div>

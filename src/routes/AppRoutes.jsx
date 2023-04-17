@@ -5,6 +5,8 @@ import Layout from "../layout/Layout";
 import NotFound404 from "../layout/NotFound404";
 import RestaurantPage from "../components/RestaurantPage";
 import Addrestaurant from "../components/Addrestaurant";
+import ManageRestaurant from "../components/ManageRestaurant";
+import UpdateRestaurant from "../components/UpdateRestaurant";
 
 const AppRoutes = () => {
   return (
@@ -15,6 +17,8 @@ const AppRoutes = () => {
           <Route path="/search" element={<Home />} />
           <Route path="/restaurant/:id" element={<RestaurantPage />} />
           <Route path="/restaurant/add" element={<Addrestaurant />} />
+          <Route path="/restaurant/manage" element={<ManageRestaurant />} />
+          <Route path="/restaurant/manage/update/:id" element={<UpdateRestaurant />} />
         </Route>
         <Route path="*" element={<NotFound404 />} />
       </Routes>
