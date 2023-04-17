@@ -19,7 +19,7 @@ const RestaurantList = () => {
             to={`/restaurant/${item.id}`}
           >
             <img
-              src={item.images[Math.round(Math.random() * 4)]}
+              src={item.main_image}
               alt="restaurant"
             />
             <h1 className=" text-2xl">{item.name}</h1>

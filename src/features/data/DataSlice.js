@@ -19,7 +19,14 @@ export const dataSlice = createSlice({
     },
     updateData: (state, action) => {},
     deleteData: (state, action) => {},
-    addData: (state, action) => {},
+    addData: (state, action) => {
+      state.value = JSON.parse(localStorage.getItem("restaurants"));
+      state.value = [...state.value, action.payload];
+      state.value[state.value.length-1].images = (state.value[state.value.length-1].images).split(',');
+      state.value[state.value.length-1].id = state.value.length;
+      state.value[state.value.length-1].created_at = Date.now();
+      localStorage.setItem("restaurants", JSON.stringify(state.value));
+    },
     setSearchRef: (state, action) => {
       state.searchRef = action.payload;
       localStorage.setItem(
@@ -28,7 +35,7 @@ export const dataSlice = createSlice({
       );
     },
     getSearchRef: (state, action) => {
-      state.searchRef = JSON.parse(localStorage.getItem("restaurants"));
+      state.searchRef = JSON.parse(localStorage.getItem("restaurants-search"));
     },
     singleRestaurant: (state, action) => {
       const id = action.payload;
@@ -49,6 +56,7 @@ export const {
   setSearchRef,
   getSearchRef,
   singleRestaurant,
+  addData,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

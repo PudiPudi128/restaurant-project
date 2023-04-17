@@ -15,7 +15,7 @@ const RestaurantPage = () => {
   return (
     <>
     {data?.name && <div className=" flex items-center flex-col">
-      <div className="flex flex-col justify-center items-center w-full h-[250px] bg-slate-800">
+      <div className="flex justify-center items-center w-full h-[250px] bg-slate-800">
         <h1 className=" text-6xl text-white">
           {data.name} Restaurant ({data.city})
         </h1>
