@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../features/data/DataSlice";
 import { Link, NavLink } from "react-router-dom";
 import EditableRestaurantList from "./EditableRestaurantList";
 
 const ManageRestaurant = () => {
   const data = useSelector((state) => state.dataReducer.value);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getData());
