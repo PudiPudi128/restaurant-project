@@ -44,7 +44,7 @@ const ManageRestaurant = () => {
                 </button>
                 <NavLink
                   className="btn btn-info text-xl"
-                  to={`/restaurant/manage/update/${item.id}`}
+                  to={`/restaurant/manage/update/${item.id-1}`}
                 >
                   <FaPencilAlt />
                 </NavLink>
