@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { nextRestaurantId, restaurantData } from "../../data/RestaurantsData";
+import { firstLenght } from "../../data/RestaurantsData";
 
 export const dataSlice = createSlice({
   name: "data",
   initialState: {
     value: [],
     searchRef: "",
+    nextRestaurantId: firstLenght
   },
   reducers: {
     setData: (state, action) => {
@@ -37,7 +38,8 @@ export const dataSlice = createSlice({
       state.value = JSON.parse(localStorage.getItem("restaurants"));
       state.value = [...state.value, action.payload];
       state.value[state.value.length-1].images = (state.value[state.value.length-1].images).split(',');
-      state.value[state.value.length-1].id = nextRestaurantId++;
+      console.log(state.nextRestaurantId);
+      state.value[state.value.length-1].id = state.nextRestaurantId++;
       state.value[state.value.length-1].created_at = Date.now();
       localStorage.setItem("restaurants", JSON.stringify(state.value));
     },

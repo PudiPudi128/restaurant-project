@@ -240,4 +240,4 @@ export const restaurantData = [
   },
 ];
 
-export let nextRestaurantId = restaurantData.length+1;
+export const firstLenght = restaurantData.length+1;
