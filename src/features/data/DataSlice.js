@@ -37,7 +37,7 @@ export const dataSlice = createSlice({
       state.value = JSON.parse(localStorage.getItem("restaurants"));
       state.value = [...state.value, action.payload];
       state.value[state.value.length-1].images = (state.value[state.value.length-1].images).split(',');
-      state.value[state.value.length-1].id = nextRestaurantId;
+      state.value[state.value.length-1].id = nextRestaurantId++;
       state.value[state.value.length-1].created_at = Date.now();
       localStorage.setItem("restaurants", JSON.stringify(state.value));
     },
